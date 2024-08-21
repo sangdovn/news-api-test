@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.CompletableFuture;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/v1")
 public class NewsController {
 
     private final NewsApi newsApi;
+
+    public NewsController(final NewsApi newsApi) {
+        this.newsApi = newsApi;
+    }
 
     @GetMapping("/news")
     public ResponseEntity<?> getEverything(@RequestParam(name = "q") String query) {
